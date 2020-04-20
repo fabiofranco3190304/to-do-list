@@ -43,50 +43,49 @@
     </main>
 
     <script>
-    var lista = document.querySelector("ul");
-    var button = document.querySelector("button");
-    var input = document.querySelector("input");
-
-
-    var items = []
-
-            function mostrarItems() {
-                lista.innerHTML = "";
-                for(item of items) {
-                    var itemLi = document.createElement("li");
-                    var itemTexto = document.createTextNode(item);
-                    itemLi.appendChild(itemTexto);
-                    lista.appendChild(itemLi);
-
-                    var removerElemento = document.createElement("a");
-                    removerElemento.setAttribute("href", "#");
-                    var removerTexto = document.createTextNode("Remover");
-                    itemLi.appendChild(removerElemento);
-                    removerElemento.appendChild(removerTexto);
-
-                    var itemPosicao = items.indexOf(item);
-                    removerElemento.setAttribute("onclick", "removerItem(" + itemPosicao + ")");
+        var lista = document.querySelector("ul");
+        var button = document.querySelector("button");
+        var input = document.querySelector("input");
+    
+        var items = []
+    
+                function mostrarItems() {
+                    lista.innerHTML = "";
+                    for(item of items) {
+                        var itemLi = document.createElement("li");
+                        var itemTexto = document.createTextNode(item);
+                        itemLi.appendChild(itemTexto);
+                        lista.appendChild(itemLi);
+    
+                        var removerElemento = document.createElement("a");
+                        removerElemento.setAttribute("href", "#");
+                        var removerTexto = document.createTextNode("Remover");
+                        itemLi.appendChild(removerElemento);
+                        removerElemento.appendChild(removerTexto);
+    
+                        var itemPosicao = items.indexOf(item);
+                        removerElemento.setAttribute("onclick", "removerItem(" + itemPosicao + ")");
+                    }
                 }
-            }
-
-            mostrarItems();
-
-            function adicionarItem(){
-                var itemTexto = input.value;
-                items.push(itemTexto);
-                mostrarItems(); 
-                input.value = "";
-            }
-
-            
-
-            button.onclick = adicionarItem;
-
-            function removerItem(itemPosicao){
-                items.splice(itemPosicao, 1);
+    
                 mostrarItems();
-
-            }
-    </script>
+    
+                function adicionarItem(){
+                    var itemTexto = input.value;
+                    items.push(itemTexto);
+                    mostrarItems(); 
+                    input.value = "";
+                }
+    
+                
+    
+                button.onclick = adicionarItem;
+    
+                function removerItem(itemPosicao){
+                    items.splice(itemPosicao, 1);
+                    mostrarItems();
+    
+                }
+        </script>
 </body>
 </html>
